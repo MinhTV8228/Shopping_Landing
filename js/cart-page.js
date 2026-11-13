@@ -495,7 +495,3 @@ $(document).ready(() => {
   const cartTrang = new CartTrang();
   window.CartTrang = cartTrang;
 });
-
-
-
-

@@ -2,7 +2,7 @@
   'use strict';
 
   function money(value) {
-    return window.formatVND(value);
+    return window.formatVNDHTML(value);
   }
 
   function createCard(product) {
@@ -24,8 +24,8 @@
     card.querySelector('.card-title').textContent = product.name;
     card.dataset.productId = product.id;
     card.querySelector('.product-description').textContent = product.description || '';
-    card.querySelector('.price').textContent = money(product.price);
-    card.querySelector('.old-price').textContent = product.oldPrice ? money(product.oldPrice) : '';
+    card.querySelector('.price').innerHTML = money(product.price);
+    card.querySelector('.old-price').innerHTML = product.oldPrice ? money(product.oldPrice) : '';
     const detailUrl = (product.detailPage || 'all-products.html') + '?id=' + encodeURIComponent(product.id);
     card.tabIndex = 0;
     card.setAttribute('role', 'link');

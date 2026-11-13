@@ -436,7 +436,3 @@ document.addEventListener('DOMContentLoaded', function() {
 // Make searchInstance globally available
 window.searchInstance = searchInstance;
 window.NONSOI_Search = searchInstance;
-
-
-
-

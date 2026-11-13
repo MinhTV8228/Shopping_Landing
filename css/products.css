@@ -70,7 +70,7 @@ body {
 }
 
 .card-body {
-  min-height: 220px;
+/*  min-height: 100px;*/
   display: flex;
   flex-direction: column;
   justify-content: space-between;

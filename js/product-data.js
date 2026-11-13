@@ -107,7 +107,7 @@
   ];
 
   const ROBE_DETAILS = {
-    description: "Áo choàng tắm unisex, dệt trơn từ 50% xơ chuối và 50% cotton; cổ kimono, tay lỡ, đai buộc và hai túi trước.",
+    description: "Áo choàng tắm unisex, dệt trơn, cổ kimono, tay lỡ, đai buộc và hai túi trước.",
     material: "50% xơ chuối, 50% cotton",
     weave: "Dệt trơn, bề mặt phẳng (plain weave)",
     style: "Áo unisex, cổ kimono, tay lỡ, đai buộc và hai túi trước",

@@ -13,6 +13,10 @@ window.formatVND = function (value) {
   return new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 0 }).format(window.parsePrice(value)) + ' ₫';
 };
 
+window.formatVNDHTML = function (value) {
+  return new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 0 }).format(window.parsePrice(value)) + ' <span class="currency-symbol">₫</span>';
+};
+
 window.showSiteToast = function (message, type) {
   let toastContainer = document.querySelector('.site-toast-container');
   if (!toastContainer) {

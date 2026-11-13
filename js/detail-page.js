@@ -16,7 +16,7 @@
   /* ---------- helpers ---------- */
 
   function money(value) {
-    return window.formatVND(value);
+    return window.formatVNDHTML(value);
   }
 
   function getProductId() {
@@ -113,6 +113,11 @@
     if (el) el.textContent = value;
   }
 
+  function setPriceHTML(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = value;
+  }
+
   function renderRating(product) {
     const container = document.getElementById('detail-rating');
     if (!container) return;
@@ -172,8 +177,8 @@
     setText('detail-breadcrumb', product.name);
     setText('detail-category', product.categoryLabel);
     setText('detail-name', product.name);
-    setText('detail-price', money(product.price));
-    setText('detail-old-price', product.oldPrice ? money(product.oldPrice) : '');
+    setPriceHTML('detail-price', money(product.price));
+    setPriceHTML('detail-old-price', product.oldPrice ? money(product.oldPrice) : '');
     setText('detail-desc', product.description);
     setText('detail-material', product.material);
     setText('detail-weave', product.weave || '');
