@@ -1,7 +1,7 @@
 /**
  * Product detail page logic for the Nõn Sợi bath linen shop
  * Reads js/product-data.js (window.NONSOI_PRODUCTS) and renders the
- * gallery, price block, size options and related products.
+ * gallery, price block and size options.
  */
 
 (function () {
@@ -247,97 +247,6 @@
     }
   }
 
-  /* ---------- related products ---------- */
-
-  function relatedCard(product) {
-    const col = document.createElement('div');
-    col.className = 'col';
-
-    const card = document.createElement('div');
-    card.className = 'card product-card h-100';
-    card.dataset.productId = product.id;
-
-    const image = document.createElement('img');
-    image.src = product.image;
-    image.alt = product.name;
-    image.className = 'card-img-top';
-
-    const body = document.createElement('div');
-    body.className = 'card-body';
-
-    const name = document.createElement('h5');
-    name.className = 'card-title';
-    name.textContent = product.name;
-
-    const description = document.createElement('p');
-    description.className = 'product-description';
-    description.textContent = product.description || '';
-
-    const prices = document.createElement('div');
-    prices.className = 'd-flex align-items-center mb-3';
-
-    const price = document.createElement('span');
-    price.className = 'price';
-    price.textContent = money(product.price);
-    prices.appendChild(price);
-
-    if (product.oldPrice) {
-      const oldPrice = document.createElement('span');
-      oldPrice.className = 'old-price';
-      oldPrice.textContent = money(product.oldPrice);
-      prices.appendChild(oldPrice);
-    }
-
-    const actions = document.createElement('div');
-    actions.className = 'd-flex justify-content-between';
-
-    const detailUrl = (product.detailPage || 'all-products.html') + '?id=' + encodeURIComponent(product.id);
-    card.tabIndex = 0;
-    card.setAttribute('role', 'link');
-    card.setAttribute('aria-label', 'Xem ' + product.name);
-    card.dataset.detailUrl = detailUrl;
-    card.style.cursor = 'pointer';
-
-    const wishlist = document.createElement('button');
-    wishlist.type = 'button';
-    wishlist.className = 'btn btn-outline-danger wishlist-btn btn-sm';
-    wishlist.title = 'Thêm vào danh sách yêu thích';
-    wishlist.innerHTML = '<i class="bi bi-heart"></i>';
-    actions.appendChild(wishlist);
-    body.appendChild(name);
-    body.appendChild(description);
-    body.appendChild(prices);
-    body.appendChild(actions);
-    card.appendChild(image);
-    card.appendChild(body);
-    col.appendChild(card);
-    return col;
-  }
-
-  function renderRelated(product) {
-    const row = document.getElementById('related-row');
-    if (!row) return;
-
-    const related = productsOfCategory(product.category)
-      .filter(function (p) { return p.id !== product.id; })
-      .slice(0, 3);
-
-    row.replaceChildren();
-    related.forEach(function (relatedProduct) {
-      row.appendChild(relatedCard(relatedProduct));
-    });
-
-    // Reflect the saved state on the small heart buttons.
-    row.querySelectorAll('.wishlist-btn').forEach(function (button, index) {
-      const item = related[index];
-      if (item && isInWishlist(item.id)) {
-        button.classList.remove('btn-outline-danger');
-        button.classList.add('btn-danger');
-        button.innerHTML = '<i class="bi bi-heart-fill"></i>';
-      }
-    });
-  }
-
   /* ---------- init ---------- */
 
   function init() {
@@ -362,7 +271,6 @@
     renderInfo(product);
     renderSizes(product);
     bindActions(product);
-    renderRelated(product);
   }
 
   if (document.readyState === 'loading') {
