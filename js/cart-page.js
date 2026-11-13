@@ -51,6 +51,10 @@ class CartTrang {
     $('#checkoutBtn').on('click', () => {
       this.proceedToCheckout();
     });
+
+    $('#confirmCheckout').on('click', () => {
+      this.confirmCheckout();
+    });
   }
 
   loadCartItems() {
@@ -436,57 +440,37 @@ class CartTrang {
     if (cartItems.length === 0) {
       return;
     }
-    
-    // Show checkout modal/confirmation
-    const checkoutBtn = $('#checkoutBtn');
-    const originalText = checkoutBtn.html();
-    
-    checkoutBtn.prop('disabled', true).html('<div class="spinner-border spinner-border-sm me-2"></div>Processing...');
-    
-    // Simulate checkout process
-    setTimeout(() => {
-      // Calculate total
-      let total = 0;
-      cartItems.forEach(item => {
-        // Handle different price formats
-        let price = 0;
-        if (typeof item.price === 'string') {
-        price = window.parsePrice(item.price);
-        } else if (typeof item.price === 'number') {
-        price = window.parsePrice(item.price);
-        }
-        
-        const quantity = parseInt(item.quantity) || 0;
-        total += price * quantity;
-      });
-      
-      // Add tax
-      total = total + (total * 0.08);
-      
-      // Show success message
-      const confirmCheckout = confirm(
-        `Complete your order?\n\nTotal: $${total.toFixed(2)}\n\nClick OK to confirm payment and clear your cart.`
-      );
-      
-      if (confirmCheckout) {
-        // Clear the cart after successful checkout
-        localStorage.removeItem('Nõn Sợi_cart');
-        
-        // Update giỏ hàng badge if cartManager exists
-        if (window.cartManager) {
-          window.cartManager.updateCartBadge();
-        }
-        
-        // Show success message
-        alert('🎉 Payment successful!\n\nCảm ơn bạn for your purchase!\nYour order has been processed and your cart has been cleared.');
-        
-        // Reload the page to show empty cart
-        window.location.reload();
-      } else {
-        // Restore button if cancelled
-        checkoutBtn.prop('disabled', false).html(originalText);
-      }
-    }, 1500);
+
+    let total = 0;
+    cartItems.forEach(item => {
+      const price = window.parsePrice(item.price);
+      const quantity = parseInt(item.quantity) || 0;
+      total += price * quantity;
+    });
+    total *= 1.08;
+
+    $('#checkoutTotal').text(window.formatVND(total));
+    const modal = new bootstrap.Modal(document.getElementById('checkoutModal'));
+    modal.show();
+  }
+
+  confirmCheckout() {
+    const confirmButton = $('#confirmCheckout');
+    confirmButton.prop('disabled', true);
+
+    localStorage.removeItem('Nõn Sợi_cart');
+
+    if (window.cartManager) {
+      window.cartManager.updateCartBadge();
+    }
+
+    const modal = bootstrap.Modal.getInstance(document.getElementById('checkoutModal'));
+    modal.hide();
+    this.loadCartItems();
+    this.updateCartSummary();
+    window.showSiteToast('Đặt hàng thành công. Giỏ hàng đã được làm trống.');
+
+    confirmButton.prop('disabled', false);
   }
 }
 
