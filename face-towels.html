@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khăn mặt - Khăn & Áo choàng tắm Nõn Sợi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="css/common.css" rel="stylesheet" />
+  <link href="css/products.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+  <!-- Khăn mặt -->
+  <section class="container py-5" data-product-filter="face">
+    <h2 class="mb-2">Khăn mặt</h2>
+    <p class="text-muted mb-4">Khăn mặt mềm mịn cho làn da nhạy cảm, khô nhanh và kháng khuẩn.</p>
+
+    <div class="text-center mt-4">
+      <a href="all-products.html" class="btn btn-outline-dark">Xem tất cả sản phẩm</a>
+    </div>
+  </section>
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/product-data.js"></script>
+  <script src="js/product-renderer.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+
+
+  <script>
+    // Load header and footer components
+    $(document).ready(function () {
+      $('#header-placeholder').load('components/header.html', function () {
+        if (typeof window.initializeHeaderComponents === 'function') {
+          window.initializeHeaderComponents();
+        }
+        if (typeof setActiveNavItem === 'function') {
+          setActiveNavItem();
+        }
+      });
+      $('#footer-placeholder').load('components/footer.html');
+    });
+  </script>
+</body>
+
+</html>

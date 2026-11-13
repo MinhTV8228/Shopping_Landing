@@ -1,0 +1,496 @@
+﻿/**
+ * Products CSS for Nõn Sợi Bath Linen Shop
+ * Converted from inline styles in WEB folder
+ */
+
+/* General Product Styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.product-card img {
+  object-fit: cover;
+  height: 400px;
+}
+
+.product-card {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.product-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  transform: translateY(-2px);
+}
+
+#related-row .product-card {
+  background-color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.product-description {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-left: 10px;
+}
+
+.carousel .card img {
+  height: 320px;
+  object-fit: cover;
+}
+
+.small-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.btn-outline-dark {
+  background-color: black;
+  color: white;
+  border-color: black;
+  transition: 0.3s ease;
+}
+
+.btn-outline-dark:hover {
+  background-color: white;
+  color: black;
+  border-color: black;
+}
+
+.card-body {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Product Detail Styles */
+.product-images img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-images .col-6 {
+  margin-bottom: 20px;
+}
+
+.product-images,
+.product-info {
+  background-color: #fff;
+  padding: 20px;
+  height: 100%;
+}
+
+/* Product Gallery Styles */
+.product-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.main-image-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.main-product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #f8f9fa;
+  transition: transform 0.3s ease;
+}
+
+.main-product-image:hover {
+  transform: scale(1.05);
+}
+
+/* Gallery Navigation Arrows */
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 2;
+  opacity: 0;
+}
+
+.main-image-container:hover .gallery-nav {
+  opacity: 1;
+}
+
+.gallery-nav:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-nav-prev {
+  left: 15px;
+}
+
+.gallery-nav-next {
+  right: 15px;
+}
+
+/* Thumbnail Container */
+.thumbnail-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.thumbnail-wrapper {
+  display: flex;
+  gap: 10px;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 5px;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.thumbnail-wrapper::-webkit-scrollbar {
+  height: 4px;
+}
+
+.thumbnail-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.thumbnail-wrapper::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.thumbnail-image {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  padding: 4px;
+}
+
+.thumbnail-image:hover {
+  border-color: #ddd;
+  transform: scale(1.05);
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.thumbnail-image.active {
+  border-color: #007bff;
+  transform: scale(1.08);
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product-gallery {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .main-image-container {
+    height: 400px;
+    margin-bottom: 15px;
+  }
+  
+  .thumbnail-wrapper {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .thumbnail-image {
+    width: 75px;
+    height: 75px;
+    padding: 3px;
+  }
+  
+  .gallery-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .gallery-nav-prev {
+    left: 10px;
+  }
+  
+  .gallery-nav-next {
+    right: 10px;
+  }
+}
+
+@media (min-width: 992px) {
+  .product-gallery {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .main-image-container {
+    flex: 1;
+    height: 600px;
+  }
+  
+  .thumbnail-container {
+    width: 120px;
+    margin-top: 0;
+    margin-left: 15px;
+  }
+  
+  .thumbnail-wrapper {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .thumbnail-image {
+    width: 110px;
+    height: 110px;
+    padding: 5px;
+  }
+}
+
+.size-btn {
+  margin: 5px;
+}
+
+/* Hero/Banner Styles */
+.hero {
+  background: url('../images/bath_towel/bathtowel_3.jpg') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.banner h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.card img {
+  height: 400px;
+  object-fit: cover;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.card-title {
+  font-weight: 700 !important;
+}
+
+/* See More/See Less Button Improvements */
+#see-more-container, #see-less-container {
+  transition: all 0.4s ease;
+}
+
+#toggle-btn, #see-less-btn {
+  border-radius: 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #000;
+}
+
+#toggle-btn:hover, #see-less-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  background-color: #fff;
+  color: #000;
+  border-color: #000;
+}
+
+#more-products {
+  transition: all 0.5s ease;
+}
+
+/* Smooth expand animation */
+@keyframes expandIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    max-height: 2000px;
+  }
+}
+
+/* Smooth collapse animation */
+@keyframes collapseOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    max-height: 2000px;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
+    max-height: 0;
+  }
+}
+
+/* See more button reappear animation */
+@keyframes reappear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Apply animations */
+#more-products.expanding {
+  animation: expandIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+#more-products.collapsing {
+  animation: collapseOut 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+#see-more-container.reappearing {
+  animation: reappear 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Icon rotation animation */
+#toggle-btn i, #see-less-btn i {
+  transition: transform 0.3s ease;
+}
+
+#toggle-btn:hover i {
+  transform: translateY(2px);
+}
+
+#see-less-btn:hover i {
+  transform: translateY(-2px);
+}
+
+/* Smooth scroll behavior for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* All Products title styling for smooth focus */
+#all-products-title {
+  scroll-margin-top: 100px; /* Account for fixed header */
+  position: relative;
+}
+
+#all-products-title h2 {
+  transition: all 0.3s ease;
+}
+
+/* Visual feedback when scrolling back to title */
+#all-products-title.highlight {
+  animation: titleHighlight 1.5s ease;
+}
+
+@keyframes titleHighlight {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.05); color: #007bff; }
+  100% { transform: scale(1); }
+}
+
+/* Enhanced visual feedback for see less button */
+#see-less-btn {
+  background-color: #000 !important;
+  border: 2px solid #000 !important;
+  color: #fff !important;
+  position: relative;
+  overflow: hidden;
+}
+
+#see-less-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s;
+}
+
+#see-less-btn:hover::before {
+  left: 100%;
+}
+
+#see-less-btn:hover {
+  background-color: #fff !important;
+  color: #000 !important;
+  border-color: #000 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Search highlight styles */
+.product-highlight {
+  animation: highlightProduct 3s ease-in-out;
+  box-shadow: 0 0 20px rgba(255, 193, 7, 0.8) !important;
+  border: 2px solid #ffc107 !important;
+  transform: scale(1.02);
+}
+
+@keyframes highlightProduct {
+  0% {
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.8);
+    transform: scale(1.02);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 193, 7, 1);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.8);
+    transform: scale(1.02);
+  }
+}

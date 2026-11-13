@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng ký - Khăn &amp; Áo choàng tắm Nõn Sợi</title>
+
+  <!-- Bootstrap + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link href="css/common.css" rel="stylesheet" />
+  <link href="css/auth.css" rel="stylesheet" />
+</head>
+
+<body class="auth-page">
+  <!-- Include Header Component -->
+  <div id="header-placeholder"></div>
+
+  <!-- Đăng ký Section -->
+  <section class="auth-section py-5">
+    <div class="auth-flex-container">
+      <!-- Left Image -->
+      <div class="auth-image-left d-none d-xl-block">
+        <img src="images/bath_towel/bathtowel_3.jpg" alt="Khăn tắm Nõn Sợi" class="img-fluid"
+          onerror="this.src='images/bath_towel/bathtowel_1.webp'">
+      </div>
+
+      <div class="auth-main-content">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <div class="auth-card">
+                <div class="auth-header">
+                  <h2>Đăng ký</h2>
+                  <p>Tạo tài khoản mới để bắt đầu mua sắm cùng Nõn Sợi!</p>
+                </div>
+
+                <!-- Đăng ký Form -->
+                <form id="registerForm" class="auth-form" novalidate>
+                  <div class="row">
+                    <!-- Tên -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="firstName" class="form-label">Tên</label>
+                        <div class="input-group">
+                          <span class="input-group-text">
+                            <i class="bi bi-person"></i>
+                          </span>
+                          <input type="text" class="form-control" id="firstName" name="firstName"
+                            placeholder="Enter first name" required />
+                        </div>
+                        <div class="invalid-feedback"></div>
+                      </div>
+                    </div>
+
+                    <!-- Họ -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="lastName" class="form-label">Họ</label>
+                        <div class="input-group">
+                          <span class="input-group-text">
+                            <i class="bi bi-person"></i>
+                          </span>
+                          <input type="text" class="form-control" id="lastName" name="lastName"
+                            placeholder="Enter last name" required />
+                        </div>
+                        <div class="invalid-feedback"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Email Field -->
+                  <div class="form-group">
+                    <label for="registerEmail" class="form-label">Email</label>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="bi bi-envelope"></i>
+                      </span>
+                      <input type="email" class="form-control" id="registerEmail" name="email"
+                        placeholder="Nhập email của bạn" required />
+                    </div>
+                    <div class="invalid-feedback"></div>
+                  </div>
+
+                  <!-- Số điện thoại Field -->
+                  <div class="form-group">
+                    <label for="phone" class="form-label">Số điện thoại</label>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="bi bi-telephone"></i>
+                      </span>
+                      <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter phone number"
+                        required />
+                    </div>
+                    <div class="invalid-feedback"></div>
+                  </div>
+
+                  <!-- Mật khẩu Field -->
+                  <div class="form-group">
+                    <label for="registerPassword" class="form-label">Mật khẩu</label>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="bi bi-lock"></i>
+                      </span>
+                      <input type="password" class="form-control" id="registerPassword" name="password"
+                        placeholder="Enter password" required />
+                      <button type="button" class="btn btn-outline-secondary password-toggle"
+                        data-target="registerPassword">
+                        <i class="bi bi-eye"></i>
+                      </button>
+                    </div>
+                    <div class="invalid-feedback"></div>
+                    <div class="password-strength">
+                      <div class="strength-meter">
+                        <div class="strength-bar"></div>
+                      </div>
+                      <small class="strength-text">Mật khẩu strength</small>
+                    </div>
+                  </div>
+
+                  <!-- Xác nhận mật khẩu Field -->
+                  <div class="form-group">
+                    <label for="confirmPassword" class="form-label">Xác nhận mật khẩu</label>
+                    <div class="input-group">
+                      <span class="input-group-text">
+                        <i class="bi bi-lock"></i>
+                      </span>
+                      <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                        placeholder="Re-enter password" required />
+                      <button type="button" class="btn btn-outline-secondary password-toggle"
+                        data-target="confirmPassword">
+                        <i class="bi bi-eye"></i>
+                      </button>
+                    </div>
+                    <div class="invalid-feedback"></div>
+                  </div>
+
+                  <!-- Giới tính -->
+                  <div class="form-group">
+                    <label class="form-label">Giới tính</label>
+                    <div class="d-flex gap-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="male" required />
+                        <label class="form-check-label" for="male">Nam</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="female"
+                          required />
+                        <label class="form-check-label" for="female">Nữ</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="other" value="other" required />
+                        <label class="form-check-label" for="other">Khác</label>
+                      </div>
+                    </div>
+                    <div class="invalid-feedback"></div>
+                  </div>
+
+                  <!-- Điều khoản & Conditions -->
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="agreeĐiều khoản" name="agreeĐiều khoản"
+                        required />
+                      <label class="form-check-label" for="agreeĐiều khoản">
+                        I agree to the
+                        <a href="policies-and-term.html" target="_blank">Điều khoản and Policies</a>
+                      </label>
+                    </div>
+                    <div class="invalid-feedback"></div>
+                  </div>
+
+                  <!-- Newsletter -->
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter" />
+                      <label class="form-check-label" for="newsletter">
+                        Subscribe to news and offers from Nõn Sợi
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Gửi Button -->
+                  <button type="submit" class="btn btn-primary auth-submit">
+                    <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                    Đăng ký
+                  </button>
+
+                  <!-- Social Đăng ký -->
+                  <div class="social-divider">
+                    <span>Hoặc đăng ký bằng</span>
+                  </div>
+
+                  <div class="social-login">
+                    <button type="button" class="btn btn-outline-danger social-btn">
+                      <i class="bi bi-google"></i>
+                      Google
+                    </button>
+                    <button type="button" class="btn btn-outline-primary social-btn">
+                      <i class="bi bi-facebook"></i>
+                      Facebook
+                    </button>
+                  </div>
+
+                  <!-- Đăng nhập Link -->
+                  <div class="auth-footer">
+                    <p>Already have an account? <a href="login.html">Đăng nhập now</a></p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Image -->
+      <div class="auth-image-right d-none d-xl-block">
+        <img src="images/hand_towel/handtowel_2.jpg" alt="Khăn tay Nõn Sợi" class="img-fluid"
+          onerror="this.src='images/hand_towel/handtowel_3.jpg'">
+      </div>
+    </div>
+  </section>
+
+  <!-- Include Footer Component -->
+  <div id="footer-placeholder" class="mt-5 pt-5"></div>
+
+  <!-- Alert Modal -->
+  <div class="modal fade" id="alertModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="alertModalTitle">Thông báo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="alertModalBody"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đồng ý</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/product-data.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/auth.js"></script>
+
+  <script>
+    // Load header and footer components
+    $(document).ready(function () {
+      $('#header-placeholder').load('components/header.html', function () {
+        // After header is loaded, initialize components
+        if (typeof window.initializeHeaderComponents === 'function') {
+          window.initializeHeaderComponents();
+        }
+        // Also set active navigation
+        if (typeof setActiveNavItem === 'function') {
+          setActiveNavItem();
+        }
+      });
+      $('#footer-placeholder').load('components/footer.html');
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+/**
+ * Policies and Terms page specific styles - keeping original colors and design
+ */
+
+/* Terms Page Styles */
+.terms-container {
+  background: linear-gradient(135deg, #97aabd 0%, #97aabd 16%, #bdc9d7 33%, #cfd7e1 50%, #d9e0e8 66%, #e4e9ee 100%);
+  padding: 40px 0;
+  min-height: 100vh;
+}
+
+.terms-content {
+  background: white;
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+.terms-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.terms-subtitle {
+  text-align: center;
+  color: #007bff; /* Bootstrap blue */
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.terms-section {
+  margin-bottom: 25px;
+}
+
+.terms-section h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.terms-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+  text-align: justify;
+  margin-bottom: 15px;
+}
+
+.terms-text strong {
+  color: #333;
+}
+
+.terms-list {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.terms-list li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+/* Table of Contents Dropdown */
+.toc-dropdown {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  border: 1px solid #e0e0e0;
+}
+
+.toc-dropdown .dropdown-toggle {
+  background: #007bff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-weight: 600;
+  width: 100%;
+  text-align: left;
+}
+
+.toc-dropdown .dropdown-toggle::after {
+  float: right;
+  margin-top: 6px;
+}
+
+.toc-dropdown .dropdown-menu {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.toc-dropdown .dropdown-item {
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  color: #333;
+  transition: background-color 0.2s ease;
+}
+
+.toc-dropdown .dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #007bff;
+}
+
+/* Quick Links Sidebar */
+.quick-links {
+  position: sticky;
+  top: 100px;
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  width: 100%; /* Ensure consistent width */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.quick-links-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap; /* Prevent title from wrapping */
+}
+
+.quick-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-links-list li {
+  margin-bottom: 10px;
+}
+
+.quick-links-list a {
+  color: #555;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  display: block;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add ellipsis for long text */
+}
+
+.quick-links-list a:hover {
+  background: #007bff; /* Bootstrap blue */
+  color: white;
+  transform: translateX(5px);
+}
+
+.quick-links-list a.active {
+  background: #007bff; /* Bootstrap blue */
+  color: white;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .quick-links {
+    position: static;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .terms-content {
+    padding: 25px 20px;
+    margin: 10px 0;
+  }
+  
+  .terms-title {
+    font-size: 1.6rem;
+  }
+  
+  .terms-section h3 {
+    font-size: 1.1rem;
+  }
+  
+  .terms-text {
+    font-size: 0.9rem;
+    text-align: left;
+  }
+  
+  .quick-links {
+    padding: 20px 15px;
+  }
+  
+  .toc-dropdown {
+    padding: 15px;
+  }
+}
+
+/* Sticky sidebar on scroll - maintain original size */
+.quick-links.sticky {
+  position: fixed;
+  top: 120px;
+  z-index: 100;
+  /* Keep original sizing properties */
+  width: calc((100% - 2rem) / 12 * 3 - 1rem); /* Approximate col-lg-3 width */
+  max-width: 300px; /* Set a reasonable max-width */
+  padding: 25px; /* Maintain padding */
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+}
+
+/* Ensure parent container maintains layout when sticky */
+.quick-links-container {
+  position: relative;
+}
+
+/* Alternative approach: always maintain fixed sizing */
+@media (min-width: 992px) {
+  .quick-links {
+    min-width: 250px;
+    max-width: 300px;
+  }
+  
+  .quick-links.sticky {
+    width: 250px; /* Fixed width when sticky */
+  }
+}
+
+/* TOC Dropdown for mobile */
+.toc-dropdown {
+  margin-bottom: 2rem;
+}
+
+.toc-dropdown .btn {
+  background: #007bff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+}
+
+.toc-dropdown .dropdown-menu {
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  min-width: 250px;
+}
+
+.toc-dropdown .dropdown-item {
+  padding: 0.75rem 1.5rem;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.toc-dropdown .dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #007bff;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}

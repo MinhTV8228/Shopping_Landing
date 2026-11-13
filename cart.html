@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giỏ hàng - Khăn &amp; Áo choàng tắm Nõn Sợi</title>
+
+  <!-- Bootstrap + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link href="css/common.css" rel="stylesheet" />
+  <link href="css/cart-page.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Include Header Component -->
+  <div id="header-placeholder"></div>
+
+  <!-- Cart Section -->
+  <section class="cart-section py-5">
+    <div class="container">
+      <!-- Trang Header -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+              <li class="breadcrumb-item active">Giỏ hàng</li>
+            </ol>
+          </nav>
+          <h1 class="h2 mb-0">Giỏ hàng của bạn</h1>
+        </div>
+      </div>
+
+      <!-- Cart Content -->
+      <div class="row">
+        <!-- Cart Items -->
+        <div class="col-lg-8">
+          <div class="cart-items-container">
+            <!-- Empty Cart Tin nhắn -->
+            <div id="empty-cart" class="empty-cart text-center py-5" style="display: none;">
+              <i class="bi bi-cart-x display-1 text-muted mb-3"></i>
+              <h3 class="text-muted">Giỏ hàng của bạn đang trống</h3>
+              <p class="text-muted mb-4">Hãy thêm sản phẩm vào giỏ hàng để tiếp tục mua sắm</p>
+              <a href="index.html" class="btn btn-primary">
+                <i class="bi bi-arrow-left me-2"></i>Continue Shopping
+              </a>
+            </div>
+
+            <!-- Cart Items List -->
+            <div id="cart-items" class="cart-items">
+              <!-- Cart items will be populated here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Cart Summary -->
+        <div class="col-lg-4">
+          <div class="cart-summary">
+            <h4 class="mb-3">Order Summary</h4>
+
+            <div class="summary-item d-flex justify-content-between">
+              <span>Tạm tính:</span>
+              <span id="subtotal">$0</span>
+            </div>
+
+            <div class="summary-item d-flex justify-content-between">
+              <span>Shipping:</span>
+              <span id="shipping">Free</span>
+            </div>
+
+            <div class="summary-item d-flex justify-content-between">
+              <span>Tax:</span>
+              <span id="tax">$0</span>
+            </div>
+
+            <hr>
+
+            <div class="summary-total d-flex justify-content-between">
+              <strong>Tổng cộng:</strong>
+              <strong id="total">$0</strong>
+            </div>
+
+            <!-- Promo Code -->
+            <div class="promo-code mt-4">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Promo code" id="promoCode" />
+                <button class="btn btn-outline-secondary" type="button" id="applyPromo">
+                  Apply
+                </button>
+              </div>
+            </div>
+
+            <!-- Thanh toán Button -->
+            <div class="checkout-actions mt-4">
+              <button class="btn btn-primary w-100 btn-lg" id="checkoutBtn">
+                <i class="bi bi-credit-card me-2"></i>Thanh toán
+              </button>
+              <a href="index.html" class="btn btn-outline-secondary w-100 mt-2">
+                <i class="bi bi-arrow-left me-2"></i>Continue Shopping
+              </a>
+            </div>
+
+            <!-- Security Badge -->
+            <div class="security-badge mt-4 text-center">
+              <small class="text-muted">
+                <i class="bi bi-shield-check text-success me-1"></i>
+                Safe & secure payment
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Include Footer Component -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Confirmation Modal -->
+  <div class="modal fade" id="removeModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Xác nhận xóa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to remove this product from your cart?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+          <button type="button" class="btn btn-danger" id="confirmXóa">Xóa</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/product-data.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/cart-page.js"></script>
+
+  <script>
+    // Load header and footer components
+    $(document).ready(function () {
+      $('#header-placeholder').load('components/header.html', function () {
+        // After header is loaded, set active navigation
+        if (typeof setActiveNavItem === 'function') {
+          setActiveNavItem();
+        }
+      });
+      $('#footer-placeholder').load('components/footer.html');
+    });
+  </script>
+</body>
+
+</html>

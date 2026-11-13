@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liên hệ - Khăn &amp; Áo choàng tắm Nõn Sợi</title>
+
+  <!-- Bootstrap + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link href="css/common.css" rel="stylesheet" />
+  <link href="css/contact.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Include Header Component -->
+  <div id="header-placeholder"></div>
+
+  <!-- Liên hệ Header -->
+  <section class="contact-header">
+    <div class="contact-flex-container">
+      <!-- Left Image -->
+      <div class="contact-image-left d-none d-xl-block">
+        <img src="images/bath_robe/bathrobe_4.jpg" alt="Áo choàng tắm Nõn Sợi" class="img-fluid">
+      </div>
+
+      <div class="contact-main-content">
+        <div class="container">
+          <h1 class="contact-title">Liên hệ</h1>
+          <p class="contact-subtitle">
+            Chúng tôi luôn sẵn sàng hỗ trợ! Hãy liên hệ với Nõn Sợi nếu bạn có câu hỏi, cần tư vấn về khăn và áo choàng
+            tắm.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Image -->
+      <div class="contact-image-right d-none d-xl-block">
+        <img src="images/bath_towel/bathtowel_2.webp" alt="Khăn tắm Nõn Sợi" class="img-fluid">
+      </div>
+    </div>
+  </section>
+
+  <!-- Liên hệ Content -->
+  <section class="contact-content">
+    <div class="container">
+      <div class="row">
+        <!-- Thông tin liên hệ -->
+        <div class="col-lg-6 mb-5">
+          <div class="contact-info">
+            <h3 class="info-title">Thông tin liên hệ</h3>
+            <p class="info-description">
+              Bạn cần tư vấn chọn khăn, áo choàng tắm hay kiểm tra đơn hàng? Hãy liên hệ với chúng tôi qua các kênh bên
+              dưới.
+            </p>
+
+            <div class="contact-details">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="bi bi-geo-alt-fill"></i>
+                </div>
+                <div class="contact-text">
+                  <h5>Ghé cửa hàng của chúng tôi</h5>
+                  <p>600 Nguyễn Văn Cừ nối dài, P. An Bình, TP. Cần Thơ</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="bi bi-telephone-fill"></i>
+                </div>
+                <div class="contact-text">
+                  <h5>Gọi cho chúng tôi</h5>
+                  <p>0898.997.979</p>
+                  <small>Thứ 2 - Thứ 7: 9:00 - 18:00</small>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="bi bi-envelope-fill"></i>
+                </div>
+                <div class="contact-text">
+                  <h5>Gửi email cho chúng tôi</h5>
+                  <p>contact@Nonsoi04@gmail.com</p>
+                  <small>Chúng tôi sẽ phản hồi trong vòng 24 giờ</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="social-media">
+              <h5>Theo dõi chúng tôi</h5>
+              <div class="social-links">
+                <a href="#" class="social-link">
+                  <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="social-link">
+                  <i class="bi bi-instagram"></i>
+                </a>
+                <a href="#" class="social-link">
+                  <i class="bi bi-youtube"></i>
+                </a>
+                <a href="#" class="social-link">
+                  <i class="bi bi-twitter"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Liên hệ Form -->
+        <div class="col-lg-6">
+          <div class="contact-form-container">
+            <h3 class="form-title">Gửi tin nhắn</h3>
+            <form class="contact-form" id="contactForm">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="firstName" class="form-label">Tên *</label>
+                  <input type="text" class="form-control" id="firstName" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="lastName" class="form-label">Họ *</label>
+                  <input type="text" class="form-control" id="lastName" required>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Email *</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="phone" class="form-label">Số điện thoại</label>
+                <input type="tel" class="form-control" id="phone">
+              </div>
+
+              <div class="mb-3">
+                <label for="subject" class="form-label">Chủ đề *</label>
+                <select class="form-select" id="subject" required>
+                  <option value="">Chọn chủ đề...</option>
+                  <option value="general">Câu hỏi chung</option>
+                  <option value="product">Tư vấn sản phẩm khăn / áo choàng</option>
+                  <option value="order">Hỗ trợ đơn hàng</option>
+                  <option value="return">Đổi trả &amp; bảo hành</option>
+                  <option value="complaint">Khiếu nại</option>
+                  <option value="partnership">Hợp tác</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="message" class="form-label">Tin nhắn *</label>
+                <textarea class="form-control" id="message" rows="5"
+                  placeholder="Cho chúng tôi biết bạn cần hỗ trợ gì..." required></textarea>
+              </div>
+
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="newsletter">
+                <label class="form-check-label" for="newsletter">
+                  Nhận tin khuyến mãi và ưu đãi đặc biệt từ Nõn Sợi
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-send">
+                <i class="bi bi-send me-2"></i>
+                Gửi Tin nhắn
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <h3 class="faq-title">Câu hỏi thường gặp</h3>
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <div class="accordion" id="faqAccordion">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq1">
+                  Làm sao để theo dõi đơn hàng của tôi?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Sau khi đơn hàng được giao cho đơn vị vận chuyển, bạn sẽ nhận được mã vận đơn qua email. Bạn có thể
+                  dùng mã này để tra cứu tình trạng gói hàng.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq2">
+                  Chính sách đổi trả của Nõn Sợi như thế nào?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Nõn Sợi hỗ trợ đổi trả trong 7 ngày với sản phẩm còn nguyên tem mác và chưa qua sử dụng. Vui lòng xem
+                  chi tiết tại trang <a href="policies-and-term.html">Chính sách &amp; điều khoản</a>.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq3">
+                  Nõn Sợi có giao hàng toàn quốc không?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Có. Nõn Sợi giao hàng toàn quốc, miễn phí vận chuyển cho đơn hàng từ 500.000đ.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq4">
+                  Làm sao chọn đúng kích cỡ khăn hoặc áo choàng tắm?
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Mỗi trang sản phẩm đều có bảng kích thước chi tiết (khăn tắm 70x140cm, khăn mặt 34x80cm, khăn tay
+                  30x30cm; áo choàng tắm S/M/L). Nếu vẫn chưa chắc, hãy liên hệ để được tư vấn.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Include Footer Component -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" title="Back to top">
+    <i class="bi bi-chevron-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/product-data.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+
+  <script>
+    // Load header and footer components
+    $(document).ready(function () {
+      $('#header-placeholder').load('components/header.html');
+      $('#footer-placeholder').load('components/footer.html');
+
+      // Liên hệ form submission
+      $('#contactForm').on('submit', function (e) {
+        e.preventDefault();
+
+        // Simple form validation and feedback
+        const firstName = $('#firstName').val();
+        const lastName = $('#lastName').val();
+        const email = $('#email').val();
+        const subject = $('#subject').val();
+        const message = $('#message').val();
+
+        if (firstName && lastName && email && subject && message) {
+          // Show success message
+          alert('Cảm ơn bạn đã gửi tin nhắn! Nõn Sợi sẽ phản hồi trong vòng 24 giờ.');
+          this.reset();
+        } else {
+          alert('Vui lòng điền đầy đủ các trường bắt buộc.');
+        }
+      });
+
+      // Social media hover effects
+      $('.social-link').hover(
+        function () {
+          $(this).addClass('animate__pulse');
+        },
+        function () {
+          $(this).removeClass('animate__pulse');
+        }
+      );
+    });
+  </script>
+</body>
+
+</html>
