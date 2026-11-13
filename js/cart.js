@@ -50,7 +50,11 @@ class CartManager {
         cartItems = [];
         cartCount = 0;
       }
+    } else {
+      cartItems = [];
+      cartCount = 0;
     }
+    window.cartItems = cartItems;
   }
 
   // Lưu cart data to localStorage
@@ -203,6 +207,7 @@ class CartManager {
 
     // Animate cart icon
     this.animateCartIcon();
+    window.showSiteToast('Đã thêm sản phẩm vào giỏ hàng.');
 
     console.log('Cart items after adding:', cartItems);
   }
@@ -218,6 +223,8 @@ class CartManager {
 
   // Update giỏ hàng count badge
   updateCartBadge() {
+    this.loadCartFromStorage();
+    cartCount = cartItems.reduce((total, item) => total + (Number(item.quantity) || 0), 0);
     // Find the cart badge element
     const cartBadge = $('.cart-badge');
     
@@ -241,7 +248,7 @@ class CartManager {
 
   // Update giỏ hàng icon background
   updateCartIcon() {
-    let cartLink = $('a[title="Cart"]');
+    let cartLink = $('a[title="Giỏ hàng"]');
     
     if (cartLink.length === 0) {
       // Fallback: find by cart icon class
@@ -279,7 +286,7 @@ class CartManager {
 
   // Animate cart icon
   animateCartIcon() {
-    const cartIcon = $('a[title="Cart"]');
+    const cartIcon = $('a[title="Giỏ hàng"]');
     cartIcon.addClass('cart-bounce');
     
     setTimeout(() => {
@@ -289,7 +296,7 @@ class CartManager {
 
   // Setup cart icon click to go to cart page
   setupCartIconClick() {
-    $(document).on('click', 'a[title="Cart"]', (e) => {
+    $(document).on('click', 'a[title="Giỏ hàng"]', (e) => {
       e.preventDefault();
       window.location.href = 'cart.html';
     });
@@ -332,6 +339,7 @@ class CartManager {
     
     // Animate cart icon
     this.animateCartIcon();
+    window.showSiteToast('Đã thêm sản phẩm vào giỏ hàng.');
     
     console.log('Cart items after direct add:', cartItems);
   }
@@ -340,9 +348,11 @@ class CartManager {
   removeFromCart(productId) {
     cartItems = cartItems.filter(item => item.id !== productId);
     cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+    window.cartItems = cartItems;
     
     this.saveCartToStorage();
     this.updateCartUI();
+    window.showSiteToast('Đã xóa sản phẩm khỏi giỏ hàng.', 'info');
   }
 
   // Update item quantity
@@ -373,6 +383,7 @@ class CartManager {
   clearCart() {
     cartItems = [];
     cartCount = 0;
+    window.cartItems = cartItems;
     
     this.saveCartToStorage();
     this.updateCartUI();
@@ -447,18 +458,20 @@ window.addToCart = function(id, name, price, image, showAlert = true) {
   } else {
     cartItems.push(product);
   }
+
+  cartCount = cartItems.reduce((total, item) => total + (Number(item.quantity) || 0), 0);
+  window.cartItems = cartItems;
   
-  // Lưu to localStorage
-  localStorage.setItem('Nõn Sợi_cart', JSON.stringify(cartItems));
+  cartManager.saveCartToStorage();
   
   // Update UI
   cartManager.updateCartBadge();
   cartManager.updateCartUI();
   
-  // Show feedback conditionally
+  // Show a short notification instead of blocking the page with an alert.
+  window.showSiteToast(`Đã thêm ${name} vào giỏ hàng.`);
   if (showAlert) {
-    alert(`${name} added to cart!`);
-    // Also show button feedback even with alert
+    // Show button feedback when the caller requests the standard add action.
     const clickedButton = (typeof event !== 'undefined' && event.target) ? event.target.closest('button') : null;
     if (clickedButton) {
       const originalText = clickedButton.innerHTML;

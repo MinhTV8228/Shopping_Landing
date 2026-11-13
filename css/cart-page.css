@@ -51,6 +51,10 @@
   background-color: #f8f9fa;
 }
 
+.cart-item-clickable {
+  cursor: pointer;
+}
+
 .cart-item-image {
   width: 100px;
   height: 100px;
@@ -175,16 +179,20 @@
 }
 
 .promo-code .input-group {
-  border-radius: 6px;
   overflow: hidden;
+  border: 1px solid #adb5bd;
+  border-radius: 6px;
 }
 
 .promo-code .form-control {
-  border-right: none;
+  border: none;
+  background-color: #fff;
 }
 
 .promo-code .btn {
-  border-left: none;
+  border: none;
+  border-left: 1px solid #adb5bd;
+  border-radius: 0;
 }
 
 /* Checkout Actions */

@@ -82,7 +82,14 @@
   }
 
   function init() {
+    const wishlistManager = window.wishlistManager;
+    if (wishlistManager) wishlistManager.loadWishlistFromStorage();
+
     document.querySelectorAll('[data-product-filter]').forEach(render);
+    if (wishlistManager) {
+      wishlistManager.updateWishlistBadge();
+      wishlistManager.updateAllWishlistButtonStates();
+    }
   }
 
   if (document.readyState === 'loading') {

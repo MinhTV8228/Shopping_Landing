@@ -33,6 +33,11 @@ class CartTrang {
       this.showRemoveConfirmation(e);
     });
 
+    $(document).on('click', '.cart-item[data-detail-url]', (e) => {
+      if ($(e.target).closest('button, input, a').length) return;
+      window.location.href = $(e.currentTarget).data('detail-url');
+    });
+
     $('#confirmRemove').on('click', () => {
       this.confirmRemoveItem();
     });
@@ -105,11 +110,15 @@ class CartTrang {
     
     const quantity = parseInt(item.quantity) || 1;
     const itemTotal = price * quantity;
+    const catalogProduct = (window.NONSOI_PRODUCTS || []).find(product => product.id === item.id);
+    const detailUrl = catalogProduct && catalogProduct.detailPage
+      ? catalogProduct.detailPage + '?id=' + encodeURIComponent(item.id)
+      : '';
     
     console.log('Quantity:', quantity, 'Item total:', itemTotal);
     
     return `
-      <div class="cart-item d-flex align-items-start p-3 border-bottom" data-id="${item.id}">
+      <div class="cart-item d-flex align-items-start p-3 border-bottom${detailUrl ? ' cart-item-clickable' : ''}" data-id="${item.id}"${detailUrl ? ` data-detail-url="${detailUrl}"` : ''}>
         <img src="${item.image}" alt="${item.name}" class="cart-item-image me-3" style="width: 80px; height: 80px; object-fit: cover;">
         
         <div class="cart-item-details flex-grow-1">
@@ -294,6 +303,7 @@ class CartTrang {
         
         // Update UI
         this.updateCartSummary();
+        window.showSiteToast('Đã xóa sản phẩm khỏi giỏ hàng.', 'info');
         
         // Check if cart is empty
         if (cartItems.length === 0) {

@@ -8,6 +8,56 @@
   background-color: var(--brand-green);
 }
 
+/* Short-lived action notifications */
+.site-toast-container {
+  position: fixed;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 240px;
+}
+
+.site-toast {
+  position: relative;
+  overflow: hidden;
+  padding: 0.75rem 1rem 0.95rem;
+  border-radius: 0.375rem;
+  color: #fff;
+  font-size: 0.9rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
+}
+
+.site-toast-success {
+  background-color: #198754;
+}
+
+.site-toast-delete {
+  background-color: #dc3545;
+}
+
+.site-toast-progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.85);
+  transform-origin: left;
+  animation: siteToastProgress 2.5s linear forwards;
+}
+
+@keyframes siteToastProgress {
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+}
+
 /* Logo Styles */
 .navbar-brand {
   padding: 0.5rem 1rem;
@@ -1169,11 +1219,11 @@ body {
   left      : 0;
   right     : 0;
   z-index   : 1030;
-  transition: transform 0.3s ease-in-out;
+  transition: none;
 }
 
 .navbar.header-hidden {
-  transform: translateY(-100%);
+  transform: translateY(0);
 }
 
 .navbar.header-visible {
@@ -1257,7 +1307,7 @@ body {
   border-radius  : 50%;
   font-weight    : 600;
   line-height    : 1;
-  display        : flex !important;
+  display        : none !important;
   align-items    : center;
   justify-content: center;
   box-shadow     : 0 2px 4px rgba(0, 0, 0, 0.2);

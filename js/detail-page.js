@@ -238,7 +238,7 @@
       paintWishlistState(wishBtn, isInWishlist(product.id));
       wishBtn.addEventListener('click', function () {
         if (typeof window.addToWishlist === 'function') {
-          window.addToWishlist(product.id, product.name, product.price, product.image, product.description, false);
+          window.addToWishlist(product.id, product.name, product.price, product.image, product.description, false, wishBtn);
           setTimeout(function () {
             paintWishlistState(wishBtn, isInWishlist(product.id));
           }, 60);
@@ -252,6 +252,8 @@
   function init() {
     const section = document.getElementById('product-detail');
     if (!section) return;
+
+    if (window.wishlistManager) window.wishlistManager.loadWishlistFromStorage();
 
     const category = section.getAttribute('data-category') || DEFAULT_CATEGORY;
     let product = findProduct(getProductId());

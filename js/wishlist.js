@@ -44,16 +44,21 @@ class WishlistManager {
     if (savedWishlist) {
       try {
         wishlistItems = JSON.parse(savedWishlist);
-        wishlistCount = wishlistItems.length;
+        if (!Array.isArray(wishlistItems)) wishlistItems = [];
       } catch (e) {
         wishlistItems = [];
-        wishlistCount = 0;
       }
+    } else {
+      wishlistItems = [];
     }
+    wishlistCount = wishlistItems.length;
+    window.wishlistItems = wishlistItems;
   }
 
   // Lưu wishlist data to localStorage
   saveWishlistToStorage() {
+    wishlistCount = wishlistItems.length;
+    window.wishlistItems = wishlistItems;
     localStorage.setItem('Nõn Sợi_wishlist', JSON.stringify(wishlistItems));
   }
 
@@ -92,7 +97,7 @@ class WishlistManager {
           this.removeFromWishlist(product.id, button);
           console.log('Removed from wishlist:', product.name);
         } else {
-          window.addToWishlist(product.id, product.name, product.price, product.image, product.description);
+          window.addToWishlist(product.id, product.name, product.price, product.image, product.description, false, button[0]);
         }
       } else {
         console.error('Product card not found');
@@ -147,6 +152,7 @@ class WishlistManager {
     
     wishlistItems = wishlistItems.filter(item => item.id !== productId);
     wishlistCount = wishlistItems.length;
+    window.wishlistItems = wishlistItems;
     
     // Lưu to localStorage
     this.saveWishlistToStorage();
@@ -160,14 +166,15 @@ class WishlistManager {
       this.showRemoveFromWishlistFeedback(button);
     }
 
-    // Optional: Show toast notification
-    this.showToast('Removed from wishlist', 'info');
+    window.showSiteToast('Đã xóa khỏi danh sách yêu thích.', 'info');
 
     console.log('Wishlist items after removing:', wishlistItems);
   }
 
   // Update wishlist UI elements
   updateWishlistUI() {
+    wishlistCount = wishlistItems.length;
+    window.wishlistItems = wishlistItems;
     // Update wishlist count badge
     this.updateWishlistBadge();
     
@@ -180,13 +187,16 @@ class WishlistManager {
 
   // Update wishlist count badge
   updateWishlistBadge() {
+    wishlistCount = wishlistItems.length;
     // Find the wishlist badge element
     const wishlistBadge = $('.wishlist-badge');
-    
+
+    wishlistBadge
+      .text(wishlistCount > 99 ? '99+' : wishlistCount)
+      .toggle(wishlistCount > 0)
+      .toggleClass('show', wishlistCount > 0);
+
     if (wishlistCount > 0) {
-      // Update badge text and show it
-      wishlistBadge.text(wishlistCount > 99 ? '99+' : wishlistCount);
-      wishlistBadge.show().addClass('show');
       
       // Add animation effect
       wishlistBadge.addClass('updated');
@@ -195,15 +205,12 @@ class WishlistManager {
       }, 600);
       
       console.log('Wishlist badge updated:', wishlistCount);
-    } else {
-      // Hide badge when wishlist is empty
-      wishlistBadge.hide().removeClass('show');
     }
   }
 
   // Update wishlist icon background
   updateWishlistIcon() {
-    let wishlistLink = $('a[title="Wishlist"]');
+    let wishlistLink = $('a[title="Danh sách yêu thích"]');
     
     if (wishlistLink.length === 0) {
       // Fallback: find by heart icon class
@@ -308,7 +315,7 @@ class WishlistManager {
 
   // Animate wishlist icon
   animateWishlistIcon() {
-    const wishlistIcon = $('a[title="Wishlist"]');
+    const wishlistIcon = $('a[title="Danh sách yêu thích"]');
     wishlistIcon.addClass('wishlist-bounce');
     
     setTimeout(() => {
@@ -318,7 +325,7 @@ class WishlistManager {
 
   // Setup wishlist icon click to go to wishlist page
   setupWishlistIconClick() {
-    $(document).on('click', 'a[title="Wishlist"]', (e) => {
+    $(document).on('click', 'a[title="Danh sách yêu thích"]', (e) => {
       e.preventDefault();
       window.location.href = 'wishlist.html';
     });
@@ -364,28 +371,6 @@ class WishlistManager {
     return false;
   }
 
-  // Show toast notification
-  showToast(message, type = 'info') {
-    // Remove existing toast
-    $('.toast-notification').remove();
-    
-    const toastHtml = `
-      <div class="toast-notification position-fixed" style="top: 20px; right: 20px; z-index: 9999;">
-        <div class="alert alert-${type === 'success' ? 'success' : type === 'info' ? 'info' : 'primary'} alert-dismissible fade show" role="alert">
-          <i class="bi bi-${type === 'success' ? 'check-circle' : type === 'info' ? 'info-circle' : 'heart'}"></i>
-          ${message}
-          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-      </div>
-    `;
-    
-    $('body').append(toastHtml);
-    
-    // Auto remove after 3 seconds
-    setTimeout(() => {
-      $('.toast-notification').fadeOut(() => $('.toast-notification').remove());
-    }, 3000);
-  }
 }
 
 // Initialize wishlist manager
@@ -402,7 +387,7 @@ window.wishlistItems = wishlistItems;
 window.WishlistManager = wishlistManager;
 
 // Global functions for onclick events
-window.addToWishlist = function(id, name, price, image, description = '', showAlert = false) {
+window.addToWishlist = function(id, name, price, image, description = '', showAlert = false, sourceButton = null) {
   console.log('Global addToWishlist called:', {id, name, price, image, showAlert, description});
   
   // Throttle to prevent duplicate calls
@@ -430,91 +415,20 @@ window.addToWishlist = function(id, name, price, image, description = '', showAl
   const existingItemIndex = wishlistItems.findIndex(item => item.id === id);
   const isInWishlist = existingItemIndex > -1;
   
-  // Find the button that was clicked
-  const clickedButton = (typeof event !== 'undefined' && event.target) ? event.target.closest('button') : null;
-  
   if (isInWishlist) {
-    // Remove from wishlist (same logic as index page)
-    wishlistItems = wishlistItems.filter(item => item.id !== id);
-    
-    // Lưu to localStorage  
-    localStorage.setItem('Nõn Sợi_wishlist', JSON.stringify(wishlistItems));
-    
-    // Update UI
-    wishlistManager.updateWishlistBadge();
-    
-    // Update all button states on the page
-    setTimeout(() => {
-      wishlistManager.updateAllWishlistButtonStates();
-    }, 50);
-    
-    if (showAlert) {
-      alert(`${name} removed from wishlist!`);
-    } else if (clickedButton) {
-      // Show remove feedback: X icon with gray background
-      const isSmallButton = clickedButton.className.includes('btn-sm');
-      const originalClasses = clickedButton.className;
-      
-      // Show X temporarily
-      if (isSmallButton) {
-        clickedButton.className = 'btn btn-secondary btn-sm';
-      } else {
-        clickedButton.className = 'btn btn-secondary';
-      }
-      clickedButton.innerHTML = '<i class="bi bi-x"></i>';
-      
-      // Đặt lại to proper state after animation
-      setTimeout(() => {
-        if (isSmallButton) {
-          clickedButton.className = 'btn btn-outline-danger btn-sm border me-2';
-        } else {
-          clickedButton.className = 'btn btn-outline-danger wishlist-btn';
-        }
-        clickedButton.innerHTML = '<i class="bi bi-heart"></i>';
-        clickedButton.title = 'Add to Wishlist';
-      }, 800);
-    }
-    
+    wishlistManager.removeFromWishlist(id, sourceButton);
     console.log('Removed from wishlist:', wishlistItems);
   } else {
-    // Add to wishlist
     wishlistItems.push(product);
-    
-    // Lưu to localStorage  
-    localStorage.setItem('Nõn Sợi_wishlist', JSON.stringify(wishlistItems));
-    
-    // Update UI
-    wishlistManager.updateWishlistBadge();
-    
-    // Update all button states on the page
-    setTimeout(() => {
-      wishlistManager.updateAllWishlistButtonStates();
-    }, 50);
-    
+    wishlistCount = wishlistItems.length;
+    window.wishlistItems = wishlistItems;
+    wishlistManager.saveWishlistToStorage();
+    wishlistManager.updateWishlistUI();
+    if (sourceButton) wishlistManager.updateWishlistButtonState(sourceButton, true);
     if (showAlert) {
-      alert(`${name} added to wishlist!`);
-    } else if (clickedButton) {
-      // Show add feedback: checkmark with green background first
-      const isSmallButton = clickedButton.className.includes('btn-sm');
-      
-      // Show green checkmark temporarily
-      if (isSmallButton) {
-        clickedButton.className = 'btn btn-success btn-sm';
-      } else {
-        clickedButton.className = 'btn btn-success';
-      }
-      clickedButton.innerHTML = '<i class="bi bi-check2"></i>';
-      
-      // Then change to filled heart with red background
-      setTimeout(() => {
-        if (isSmallButton) {
-          clickedButton.className = 'btn btn-danger btn-sm border me-2';
-        } else {
-          clickedButton.className = 'btn btn-danger wishlist-btn';
-        }
-        clickedButton.innerHTML = '<i class="bi bi-heart-fill"></i>';
-        clickedButton.title = 'Remove from Wishlist';
-      }, 800);
+      window.showSiteToast(`Đã thêm ${name} vào danh sách yêu thích.`);
+    } else {
+      window.showSiteToast('Đã thêm vào danh sách yêu thích.');
     }
     
     console.log('Added to wishlist:', wishlistItems);

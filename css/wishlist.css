@@ -171,9 +171,10 @@
 }
 
 .btn-remove-wishlist:hover {
-  background: #f8f9fa;
-  border-color: #adb5bd;
-  color: #495057;
+  background: #dc3545;
+  border-color: #dc3545;
+  color: white;
+  transform: translateY(-1px);
 }
 
 /* Remove button (top right) */
