@@ -1,6 +1,10 @@
 ﻿/* Base Styles */
+:root {
+  --brand-green: #32582b;
+}
+
 .bg-light-pink {
-  background-color: #32582b;
+  background-color: var(--brand-green);
 }
 
 /* Logo Styles */
@@ -32,34 +36,28 @@ footer img {
 footer {
   min-height: 400px;
   padding: 40px 0 20px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  background: linear-gradient(to bottom, #32582b 0%, #dce7d9 55%, #fff 100%);
-  color: #263323;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--brand-green);
+  color: #fff;
 }
 
 footer h6,
 footer p,
 footer a,
 footer .text-muted {
-  color: #263323 !important;
+  color: #fff !important;
 }
 
 footer a:hover {
-  color: #32582b !important;
+  color: #d7ead3 !important;
 }
-
-/*footer .row:first-child,
-footer .row:first-child a,
-footer .row:first-child .text-muted {
-  color: #fff !important;
-}*/
 
 footer .row:first-child a:hover {
   color: #d7ead3 !important;
 }
 
 footer hr {
-  border-color: rgba(38, 51, 35, 0.35);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Search Styles */
@@ -915,7 +913,7 @@ footer hr {
 
 /* Footer Styles */
 footer {
-  background-color: #f8f9fa !important;
+  background-color: var(--brand-green) !important;
 }
 
 footer h6 {

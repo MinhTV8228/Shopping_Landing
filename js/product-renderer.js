@@ -51,6 +51,9 @@
     if (filter === 'new') {
       return products.filter(function (product) { return product.isNew === true; });
     }
+    if (filter === 'towels') {
+      return products.filter(function (product) { return ['bath', 'face', 'hand'].indexOf(product.category) !== -1; });
+    }
     return products.filter(function (product) { return product.category === filter; });
   }
 
