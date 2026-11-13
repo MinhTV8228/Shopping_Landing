@@ -44,7 +44,7 @@
 
 /* Feedback Header */
 .feedback-header {
-  background: linear-gradient(135deg, #c9d6e8 0%, #e8f0fe 50%, #f8f9fa 100%);
+  background: var(--page-background);
   padding: 60px 0;
   text-align: center;
 }
@@ -64,7 +64,7 @@
 
 /* Overall Rating Section */
 .overall-rating {
-  background: #f8f9fa;
+  background: var(--page-background);
   padding: 40px 0;
   text-align: center;
 }
@@ -100,7 +100,7 @@
 
 /* Filter Section */
 .filter-section {
-  background: white;
+  background: var(--page-background);
   padding: 20px 0;
   border-bottom: 1px solid #eee;
 }
@@ -133,14 +133,14 @@
 /* Reviews Section */
 .reviews-section {
   padding: 50px 0;
-  background: linear-gradient(135deg, #97aabd 0%, #97aabd 16%, #bdc9d7 33%, #cfd7e1 50%, #d9e0e8 66%, #e4e9ee 100%);
+  background: var(--page-background);
 }
 
 /* Container for reviews to prevent overlap */
 .py-5 {
   position: relative;
   overflow: hidden; /* Prevent any overflow issues */
-  background: linear-gradient(135deg, #97aabd 0%, #97aabd 16%, #bdc9d7 33%, #cfd7e1 50%, #d9e0e8 66%, #e4e9ee 100%);
+  background: var(--page-background);
 }
 
 .section-title {
@@ -304,7 +304,7 @@
 
 /* Add Review Section */
 .add-review-section {
-  background: white;
+  background: var(--page-background);
   padding: 50px 0;
 }
 

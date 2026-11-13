@@ -2,7 +2,7 @@
 
 /* Contact Header */
 .contact-header {
-  background: linear-gradient(135deg, #c9d6e8 0%, #e8f0fe 50%, #f8f9fa 100%);
+  background: var(--page-background);
   padding: 80px 0;
 }
 
@@ -75,7 +75,7 @@
 /* Contact Content */
 .contact-content {
   padding: 80px 0;
-  background: linear-gradient(135deg, #97aabd 0%, #97aabd 16%, #bdc9d7 33%, #cfd7e1 50%, #d9e0e8 66%, #e4e9ee 100%);
+  background: var(--page-background);
 }
 
 /* Flexbox layout for contact content with side images */
@@ -329,7 +329,7 @@
 /* FAQ Section */
 .faq-section {
   padding: 80px 0;
-  background: white;
+  background: var(--page-background);
 }
 
 .faq-title {

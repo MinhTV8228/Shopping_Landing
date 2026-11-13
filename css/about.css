@@ -12,14 +12,14 @@
 }
 
 :root {
-    --about-background: #faf7ca;
+    --about-background: var(--page-background);
     --about-green: #315c34;
     --about-text: #897f67;
 }
 
 .about-page {
     width: 100%;
-    background-color: #f8f2c8;
+    background-color: var(--about-background);
 }
 
 .about-story {

@@ -4,7 +4,7 @@
 
 /* Terms Page Styles */
 .terms-container {
-  background: linear-gradient(135deg, #97aabd 0%, #97aabd 16%, #bdc9d7 33%, #cfd7e1 50%, #d9e0e8 66%, #e4e9ee 100%);
+  background: var(--page-background);
   padding: 40px 0;
   min-height: 100vh;
 }
