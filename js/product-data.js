@@ -32,7 +32,7 @@
       "id": "btw-1",
       "isNew": true,
       "isSale": true,
-      "name": "Khăn tắm 70x140",
+      "name": "Khăn tắm",
       "price": 320000,
       "oldPrice": 400000,
       "description": "Khăn tắm kích thước 70x140cm, thấm hút vượt trội và bền màu sau nhiều lần giặt.",
@@ -57,7 +57,7 @@
     {
       "id": "ftw-1",
       "isNew": true,
-      "name": "Khăn mặt 34x76",
+      "name": "Khăn mặt",
       "price": 95000,
       "oldPrice": 125000,
       "description": "Khăn mặt 34x76cm, mềm mịn và thấm hút tốt cho da mặt.",
@@ -82,7 +82,7 @@
     {
       "id": "htw-1",
       "isNew": true,
-      "name": "Khăn tay 30x30",
+      "name": "Khăn tay",
       "price": 45000,
       "oldPrice": 59000,
       "description": "Khăn tay 30x30cm, nhỏ gọn và thấm hút tốt.",
