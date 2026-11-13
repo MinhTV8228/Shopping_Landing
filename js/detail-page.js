@@ -67,7 +67,11 @@
     if (galleryImages.indexOf(product.image) === -1) {
       galleryImages.unshift(product.image);
     }
-    galleryImages[0] = SIZE_IMAGE;
+    galleryImages = galleryImages.filter(function (src) {
+      return src !== SIZE_IMAGE;
+    });
+    galleryImages = galleryImages.slice(0, 4);
+    galleryImages.push(SIZE_IMAGE);
 
     if (wrapper) {
       wrapper.innerHTML = '';
@@ -84,7 +88,7 @@
       });
     }
 
-    setMainImage(0);
+    setMainImage(galleryImages.indexOf(product.image));
 
     const prev = document.getElementById('gallery-prev');
     const next = document.getElementById('gallery-next');

@@ -32,10 +32,10 @@
       "id": "btw-1",
       "isNew": true,
       "isSale": true,
-      "name": "Khăn tắm Cotton 70x140",
+      "name": "Khăn tắm 70x140",
       "price": 320000,
       "oldPrice": 400000,
-      "description": "Khăn tắm cotton kích thước 70x140cm, thấm hút vượt trội và bền màu sau nhiều lần giặt.",
+      "description": "Khăn tắm kích thước 70x140cm, thấm hút vượt trội và bền màu sau nhiều lần giặt.",
       "category": "bath",
       "categoryLabel": "Khăn tắm",
       "categoryPage": "bath-towels.html",
@@ -46,21 +46,21 @@
         "images/bath_towel/bathtowel_2.webp",
         "images/bath_towel/bathtowel_3.jpg",
         "images/bath_towel/bathtowel_4.jpg",
-        "images/bath_towel/bathtowel_5.jpg",
+        "images/bath_towel/bathtowel_6.webp",
         "images/bath_towel/bathtowel_6.webp"
       ],
       "sizes": ["70x140cm", "90x150cm"],
-      "material": "Cotton tự nhiên, sợi bamboo hoặc microfiber (tùy phiên bản)",
+      "material": "Sợi bamboo hoặc microfiber (tùy phiên bản)",
       "sizeInfo": "70x140cm và 90x150cm",
       "care": "Giặt máy ở 30°C cùng màu, hạn chế sấy nóng để giữ độ mềm.",
     },
     {
       "id": "ftw-1",
       "isNew": true,
-      "name": "Khăn mặt Cotton 34x76",
+      "name": "Khăn mặt 34x76",
       "price": 95000,
       "oldPrice": 125000,
-      "description": "Khăn mặt cotton 34x76cm, mềm mịn và thấm hút tốt cho da mặt.",
+      "description": "Khăn mặt 34x76cm, mềm mịn và thấm hút tốt cho da mặt.",
       "category": "face",
       "categoryLabel": "Khăn mặt",
       "categoryPage": "face-towels.html",
@@ -75,17 +75,17 @@
         "images/face_towel/facetowel_6.jpg"
       ],
       "sizes": ["34x76cm", "40x80cm"],
-      "material": "Cotton, sợi bamboo hoặc microfiber (tùy phiên bản)",
+      "material": "sợi bamboo hoặc microfiber (tùy phiên bản)",
       "sizeInfo": "34x76cm và 40x80cm",
       "care": "Giặt máy ở 30°C, phơi khô hoàn toàn trước khi dùng lại.",
     },
     {
       "id": "htw-1",
       "isNew": true,
-      "name": "Khăn tay Cotton 30x30",
+      "name": "Khăn tay 30x30",
       "price": 45000,
       "oldPrice": 59000,
-      "description": "Khăn tay cotton 30x30cm, nhỏ gọn và thấm hút tốt.",
+      "description": "Khăn tay 30x30cm, nhỏ gọn và thấm hút tốt.",
       "category": "hand",
       "categoryLabel": "Khăn tay",
       "categoryPage": "hand-towels.html",
@@ -100,15 +100,15 @@
         "images/hand_towel/handtowel_6.jpg"
       ],
       "sizes": ["30x30cm", "40x40cm"],
-      "material": "Cotton, sợi bamboo hoặc microfiber (tùy phiên bản)",
+      "material": "Sợi bamboo hoặc microfiber (tùy phiên bản)",
       "sizeInfo": "30x30cm và 40x40cm",
       "care": "Giặt máy ở 30°C, có thể ủi ở nhiệt độ thấp.",
     }
   ];
 
   const ROBE_DETAILS = {
-    description: "Áo choàng tắm unisex, dệt trơn từ 30% xơ chuối và 70% cotton; cổ kimono, tay lỡ, đai buộc và hai túi trước.",
-    material: "30% xơ chuối, 70% cotton",
+    description: "Áo choàng tắm unisex, dệt trơn từ 50% xơ chuối và 50% cotton; cổ kimono, tay lỡ, đai buộc và hai túi trước.",
+    material: "50% xơ chuối, 50% cotton",
     weave: "Dệt trơn, bề mặt phẳng (plain weave)",
     style: "Áo unisex, cổ kimono, tay lỡ, đai buộc và hai túi trước",
     sizes: ["S", "M", "L", "XL", "XXL"],
@@ -119,10 +119,22 @@
     developmentYear: 2026
   };
 
+  const TEXTILE_DETAILS = {
+    material: "50% xơ chuối, 50% cotton",
+    materialSource: "Xơ từ thân chuối sau thu hoạch tại Việt Nam, phối cùng cotton",
+    developer: "Nõn Sợi",
+    manufacturer: "Nõn Sợi, Việt Nam",
+    developmentYear: 2026,
+    care: "Giặt máy ở 30°C, không dùng chất tẩy mạnh, phơi nơi thoáng mát."
+  };
+
   const PRODUCTS = LIST.map(function (product) {
-    return product.category === 'robe'
-      ? Object.assign({}, product, ROBE_DETAILS)
-      : product;
+    return Object.assign(
+      {},
+      product,
+      TEXTILE_DETAILS,
+      product.category === 'robe' ? ROBE_DETAILS : {}
+    );
   });
 
   window.NONSOI_PRODUCTS = PRODUCTS;
