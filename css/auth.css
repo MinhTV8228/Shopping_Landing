@@ -71,7 +71,7 @@
 
 /* Apply gradient to entire page for auth pages */
 body.auth-page {
-  background: linear-gradient(135deg, #97aabd 0%, #97aabd 16%, #bdc9d7 33%, #cfd7e1 50%, #d9e0e8 66%, #e4e9ee 100%);
+  background: var(--page-background);
   min-height: 100vh;
   margin: 0;
   padding: 0;
