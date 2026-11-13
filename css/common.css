@@ -9,9 +9,9 @@
 }
 
 .currency-symbol {
-    font-size: 1.3em;
+    font-size: 1.1em;
     position: relative;
-    top: 5px;
+    top: 2px;
 }
 
 /* Short-lived action notifications */
